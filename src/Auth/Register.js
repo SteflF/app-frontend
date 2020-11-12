@@ -25,7 +25,7 @@ const Register = (props) =>
         e.preventDefault();
         isMounted && setMessage("");
 
-        if (password.length <= 6) {
+        if (password.length <= 3) {
             isMounted && setMessage("Heslo musí obsahovat více 6 znaků!");
             return;
         }
@@ -37,9 +37,7 @@ const Register = (props) =>
 
         AuthService.register(username, password).then(res =>{
             if (res.data.status === 200) {
-                let data = res.data.result;
-                Session.storeAuthData(data.token, data.username, data.role);
-                props.history.push("/");
+                props.history.push("/login");
             } else {
                 if (res.data.status_key === "ALREADY-EXISTS") {
                     isMounted && setMessage("Zvolené uživatelské jméno nelze registrovat!");

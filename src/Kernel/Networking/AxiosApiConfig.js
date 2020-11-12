@@ -1,12 +1,13 @@
 import axios from 'axios';
 import Session from "../Services/SessionService";
-import withReactContent from "sweetalert2-react-content";
-import Swal from "sweetalert2"
 
 // Create custom instance.
 const instance = axios.create({
     baseURL: process.env.REACT_APP_API_URL
 });
+
+// Alter defaults after instance has been created
+// instance.defaults.headers.common['Authorization'] = Session.getBearerToken();
 
 // Track API requests on DEBUG app.
 if(process.env.NODE_ENV === 'development')
@@ -31,24 +32,9 @@ instance.interceptors.response.use(function(response)
 }, function(error)
 {
     Session.logout();
-    withReactContent(Swal).fire({
-        title: "Relace vypršela",
-        text: "Vaše relace již vypršela. Chcete nyní přesměrovat na přihlašovací obrazovku?",
-        icon: "error",
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showCancelButton: true,
-        confirmButtonColor: "#49a942",
-        confirmButtonText: "Znovu přihlásit",
-        cancelButtonText: "Hlavní strana",
-        cancelButtonColor: "#dd6b55"
-    }).then((result) =>
-    {
-        if(result.value)
-            window.location = "/login"
-        else
-            window.location = "/";
-    })
+
+    // PreviousPage.setLastRoute(url);
+    // window.location = "/login"
     return Promise.resolve();
 });
 

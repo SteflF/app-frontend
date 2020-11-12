@@ -6,7 +6,7 @@ class Header extends React.Component {
     render() {
         return(
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a className="navbar-brand" href="#">{Session.getUsername()}</a>
+                <a className="navbar-brand" href="#fuu">{Session.getUsername()}</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -17,10 +17,10 @@ class Header extends React.Component {
                             <NavLink className="nav-link" exact to="/">Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/books">Books</NavLink>
+                            <NavLink className="nav-link" to="/devices">Books</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/authors">Authors</NavLink>
+                            <NavLink className="nav-link" to="/sensors">Authors</NavLink>
                         </li>
                         <li className="nav-item dropdown ml-auto">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -28,8 +28,7 @@ class Header extends React.Component {
                                 {Session.getUsername()}
                             </a>
                             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a className="dropdown-item" href="#">Action</a>
-                                <a className="dropdown-item" href="#">Another action</a>
+                                <Link className="dropdown-item" to="/passwdChange">Change password</Link>
                                 <Link className="dropdown-item" to="/logout">Log out</Link>
                             </div>
                         </li>

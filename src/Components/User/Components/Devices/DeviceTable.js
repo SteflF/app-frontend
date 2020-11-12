@@ -1,28 +1,29 @@
 import * as React from "react";
-import BookListItem from "./BookListItem"
+import DeviceListItem from "./DeviceListItem"
 
-class BookTable extends React.Component {
+class DeviceTable extends React.Component {
     state = {
         books: this.props.books
     };
 
     render() {
         return (
-            <table className="table">
+            <table className="table table-dark">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                    {this.state.books.map(book => (
-                        <BookListItem key={book.id} name={book.name}></BookListItem>
-                    ))}
+                    {
+                        this.state.books.map(book => (<DeviceListItem key={book.id} id={book.id} name={book.name} />))
+                    }
                 </tbody>
             </table>
         );
     }
 }
 
-export default BookTable;
+export default DeviceTable;

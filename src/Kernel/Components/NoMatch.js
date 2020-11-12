@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 const NoMatch = () => {
 
     useEffect(() => {
-        document.title = 'CDIS :: Strana nenalezena';
+        document.title = 'Strana nenalezena';
     });
 
     return (

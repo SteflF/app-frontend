@@ -1,8 +1,8 @@
 import * as React from "react";
 
-class BookListItem extends React.Component {
+class DeviceListItem extends React.Component {
     state = {
-        id: this.props.key,
+        id: this.props.id,
         name: this.props.name
     };
 
@@ -11,9 +11,10 @@ class BookListItem extends React.Component {
             <tr>
                 <th scope="row">{this.state.id}</th>
                 <td>{this.state.name}</td>
+                <td>Add/Edit/Remove</td>
             </tr>
         );
     }
 }
 
-export default BookListItem;
+export default DeviceListItem;

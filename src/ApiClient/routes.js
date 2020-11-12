@@ -1,2 +1,3 @@
-export const BookController_GetUserBooks = `/book/userBooks`;
-export const AuthorController_GetBookAuthors = `/author/bookAuthors`;
+export const DeviceController_GetDevices = `/api/device/devices`;
+export const SensorController_GetSensors = `/api/sensor/sensors`;
+export const SensorController_GetDeviceSensors = (id) => `/api/sensor/deviceSensors/${id}`;
