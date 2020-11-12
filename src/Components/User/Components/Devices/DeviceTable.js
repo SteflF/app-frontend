@@ -3,7 +3,7 @@ import DeviceListItem from "./DeviceListItem"
 
 class DeviceTable extends React.Component {
     state = {
-        books: this.props.books
+        devices: this.props.devices
     };
 
     render() {
@@ -18,7 +18,7 @@ class DeviceTable extends React.Component {
                 </thead>
                 <tbody>
                     {
-                        this.state.books.map(book => (<DeviceListItem key={book.id} id={book.id} name={book.name} />))
+                        this.state.devices.map(device => (<DeviceListItem key={device.id} id={device.id} name={device.name} />))
                     }
                 </tbody>
             </table>

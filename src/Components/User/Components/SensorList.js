@@ -7,16 +7,16 @@ import {setupToken} from "../../../Kernel/Networking/AxiosApiConfig";
 
 class SensorList extends React.Component {
     state = {
-        authors: []
+        sensors: []
     }
 
     async componentDidMount(){
         setupToken();
-        const { data: authors } = await http.get(SensorController_GetSensors);
+        const { data: sensors } = await http.get(SensorController_GetSensors);
 
-        console.log("authors: ", authors);
+        console.log("sensors: ", sensors);
 
-        this.setState({ authors: authors.result });
+        this.setState({ sensors: sensors.result });
     }
 
     render() {
@@ -26,9 +26,9 @@ class SensorList extends React.Component {
                     <title>Sensors</title>
                 </Helmet>
                 {
-                    this.state.authors.length === 0
-                    ? <h2 className="text-light">No authors</h2>
-                    : <SensorTable books={this.state.authors} />
+                    this.state.sensors.length === 0
+                    ? <h2 className="text-light">No sensors</h2>
+                    : <SensorTable books={this.state.sensors} />
                 }
             </React.Fragment>
         )

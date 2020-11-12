@@ -9,6 +9,8 @@ import Logout from "./Auth/Logout";
 import Register from "./Auth/Register";
 import RenewPass from "./Auth/RecoverPassword";
 import RedirectToAppRouter from "./Kernel/Routing/RedirectToAppRouter";
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
     <React.StrictMode>

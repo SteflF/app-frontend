@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 import LoadingComponent from "../Kernel/Components/LoadingComponent";
-import Session from "../Kernel/Services/SessionService";
 import AuthService from "../Kernel/Services/AuthenticationService";
 
 const Register = (props) =>

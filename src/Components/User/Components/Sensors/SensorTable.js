@@ -3,7 +3,7 @@ import SensorListItem from "./SensorListItem"
 
 class SensorTable extends React.Component {
     state = {
-        books: this.props.books
+        sensors: this.props.sensors
     };
 
     render() {
@@ -17,8 +17,8 @@ class SensorTable extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                {this.state.books.map(book => (
-                    <SensorListItem key={book.id} id={book.id} name={book.name}></SensorListItem>
+                {this.state.sensors.map(sensor => (
+                    <SensorListItem key={sensor.id} id={sensor.id} name={sensor.name}></SensorListItem>
                 ))}
                 </tbody>
             </table>
