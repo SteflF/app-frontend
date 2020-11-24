@@ -18,7 +18,10 @@ class DeviceTable extends React.Component {
                 </thead>
                 <tbody>
                     {
-                        this.state.devices.map(device => (<DeviceListItem key={device.id} id={device.id} name={device.name} />))
+                        this.state.devices.map(device => (<DeviceListItem key={device.id}
+                                                                          device={device}
+                                                                          onButtonClick={this.props.onButtonClick}
+                        />))
                     }
                 </tbody>
             </table>

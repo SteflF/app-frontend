@@ -1,21 +1,19 @@
 import * as React from "react";
-import {Link} from "react-router-dom";
+import {Button} from "react-bootstrap";
 
 class DeviceListItem extends React.Component {
     state = {
-        id: this.props.id,
-        name: this.props.name
+        device: this.props.device
     };
 
     render() {
         return (
             <tr>
-                <th scope="row">{this.state.id}</th>
-                <td>{this.state.name}</td>
+                <th scope="row">{this.state.device.id}</th>
+                <td>{this.state.device.name}</td>
                 <td>
-                    <Link className="mr-1" to="">Add</Link>
-                    <Link className="mr-1" to="">Edit</Link>
-                    <Link to="">Remove</Link>
+                    <Button className="btn-secondary mr-1" onClick={() => this.props.onButtonClick(this.state.device, 'edit')}>Edit</Button>
+                    <Button className="btn-danger" onClick={() => this.props.onButtonClick(this.state.device, 'remove')}>Remove</Button>
                 </td>
             </tr>
         );

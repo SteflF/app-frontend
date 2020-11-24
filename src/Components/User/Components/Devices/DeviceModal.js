@@ -2,25 +2,40 @@ import * as React from "react";
 import {Button, Modal} from "react-bootstrap";
 
 const INITIAL_STATE = {
-    deviceName: ''
+    device: {id: '', name: ''}
 };
 
 class DeviceModal extends React.Component {
     state = {
-        deviceName: ''
+        device: { id: '', name: ''}
+    }
+
+    componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
+        if (prevProps !== this.props){
+            console.log("zavolano componentchange: ", this.state.device);
+            this.setState({device: this.props.device});
+        }
     }
 
     handleChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
+        //this.setState({[e.target.name]: e.target.value});
+        console.log("zavolano zmena: ", e.target.value);
+        this.setState(prevState => ({
+            device: {
+                ...prevState.device,
+                name: e.target.value
+            }
+        }))
     }
 
-    handleSubmit = () => {
-        this.props.onSubmit(this.state.deviceName);
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.onSubmit(this.state.device);
         this.handleHide();
     }
 
     handleHide = () => {
-        this.setState({ ...INITIAL_STATE });
+        this.setState({ device: INITIAL_STATE });
         this.props.onHide();
     }
 
@@ -37,10 +52,13 @@ class DeviceModal extends React.Component {
                         <Modal.Title>{this.props.title}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Device name</label>
-                            <input name="deviceName" className="form-control" placeholder="Name" value={this.state.deviceName} onChange={this.handleChange} required />
-                        </div>
+                        {this.props.action === "remove"
+                            ? <label htmlFor="exampleInputPassword1">Opravdu chcete smazat zařízení {<b>{this.props.device.name}</b>}?</label>
+                            : <div className="form-group">
+                                <label htmlFor="exampleInputPassword1">Device name</label>
+                                <input name="deviceName" className="form-control" placeholder="Name" value={this.state.device.name} onChange={this.handleChange} required />
+                            </div>}
+
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleHide}>
