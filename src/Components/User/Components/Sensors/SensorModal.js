@@ -2,34 +2,34 @@ import * as React from "react";
 import {Button, Modal} from "react-bootstrap";
 
 const INITIAL_STATE = {
-    device: {id: '', name: ''}
+    sensor: {id: '', name: ''}
 };
 
-class DeviceModal extends React.Component {
+class SensorModal extends React.Component {
     state = {
-        device: { id: '', name: '' }
+        sensor: { id: '', name: '' }
     }
 
     componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
         if (prevProps !== this.props){
-            this.setState({device: this.props.device});
+            this.setState({sensor: this.props.sensor});
         }
     }
 
     handleChange = (e) => {
         this.setState({
-            device: { name: e.target.value }
+            sensor: { name: e.target.value }
         });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({ sensor: INITIAL_STATE.device });
-        this.props.onSubmit(this.state.device);
+        this.setState({ sensor: INITIAL_STATE.sensor });
+        this.props.onSubmit(this.state.sensor);
     }
 
     handleHide = () => {
-        this.setState({ device: INITIAL_STATE.device });
+        this.setState({ sensor: INITIAL_STATE.sensor });
         this.props.onHide();
     }
 
@@ -46,10 +46,10 @@ class DeviceModal extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     {this.props.action === "remove"
-                        ? <label htmlFor="exampleInputPassword1">Opravdu chcete smazat zařízení {<b>{this.props.device.name}</b>}?</label>
+                        ? <label htmlFor="exampleInputPassword1">Opravdu chcete smazat senzor {<b>{this.props.sensor.name}</b>}?</label>
                         : <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Device</label>
-                            <input name="name" className="form-control" placeholder="Name" value={this.state.device.name} onChange={this.handleChange} required />
+                            <label htmlFor="exampleInputPassword1">Sensor</label>
+                            <input name="name" className="form-control" placeholder="Name" value={this.state.sensor.name} onChange={this.handleChange} required />
                         </div>}
 
                 </Modal.Body>
@@ -64,4 +64,4 @@ class DeviceModal extends React.Component {
     }
 }
 
-export default DeviceModal;
+export default SensorModal;

@@ -18,9 +18,6 @@ class DeviceList extends React.Component {
         modalButtonText: ''
     }
 
-    componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
-    }
-
     async componentDidMount(){
         setupToken();
         const { data: response } = await http.get(DeviceController_GetDevices);
@@ -28,10 +25,6 @@ class DeviceList extends React.Component {
         if (response.result.length !== 0) {
             this.setState({ devices: response.result });
         }
-    }
-
-    onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
     }
 
     showDeviceModal = (device, action) => {
@@ -104,6 +97,8 @@ class DeviceList extends React.Component {
                 toast.error('Something went wrong!');
             }
         }
+
+        this.setState({ show: false });
     }
 
     render() {
@@ -112,26 +107,34 @@ class DeviceList extends React.Component {
                 <Helmet>
                     <title>Devices</title>
                 </Helmet>
-                <ToastContainer/>
-                {
-                    this.state.devices.length === 0
-                        ? <h2 className="text-light">No devices</h2>
-                        : <DeviceTable devices={this.state.devices}
-                                       onButtonClick={this.showDeviceModal} />
-                }
+                <div className="container">
+                    <ToastContainer/>
 
-                <Button variant="primary" onClick={() => this.showDeviceModal(null, 'create')}>
-                    Add device
-                </Button>
+                    <div className="row">
+                        <h2 className="text-light">Devices</h2>
+                    </div>
 
-                <DeviceModal title={this.state.modalTitle}
-                             action={this.state.modalAction}
-                             buttonText={this.state.modalButtonText}
-                             device={this.state.deviceToEdit}
-                             show={this.state.show}
-                             onHide={this.handleCloseModel}
-                             onSubmit={this.handleSubmit} />
+                    <div className="row">
+                        {
+                            this.state.devices.length === 0
+                                ? <h2 className="text-light">No devices</h2>
+                                : <DeviceTable devices={this.state.devices}
+                                               onButtonClick={this.showDeviceModal} />
+                        }
+                    </div>
 
+                    <Button variant="primary" onClick={() => this.showDeviceModal(null, 'create')}>
+                        Add device
+                    </Button>
+
+                    <DeviceModal title={this.state.modalTitle}
+                                 action={this.state.modalAction}
+                                 buttonText={this.state.modalButtonText}
+                                 device={this.state.deviceToEdit}
+                                 show={this.state.show}
+                                 onHide={this.handleCloseModel}
+                                 onSubmit={this.handleSubmit} />
+                </div>
             </React.Fragment>
         )
     }

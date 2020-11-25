@@ -2,10 +2,6 @@ import * as React from "react";
 import DeviceListItem from "./DeviceListItem"
 
 class DeviceTable extends React.Component {
-    state = {
-        devices: this.props.devices
-    };
-
     render() {
         return (
             <table className="table table-dark">
@@ -17,12 +13,12 @@ class DeviceTable extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                    {
-                        this.state.devices.map(device => (<DeviceListItem key={device.id}
-                                                                          device={device}
-                                                                          onButtonClick={this.props.onButtonClick}
-                        />))
-                    }
+                    {this.props.devices.map(device => (
+                        <DeviceListItem key={device.id}
+                                        device={device}
+                                        onButtonClick={this.props.onButtonClick}
+                        />
+                    ))}
                 </tbody>
             </table>
         );

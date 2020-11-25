@@ -2,10 +2,6 @@ import * as React from "react";
 import SensorListItem from "./SensorListItem"
 
 class SensorTable extends React.Component {
-    state = {
-        sensors: this.props.sensors
-    };
-
     render() {
         return (
             <table className="table table-dark">
@@ -17,9 +13,12 @@ class SensorTable extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                {this.state.sensors.map(sensor => (
-                    <SensorListItem key={sensor.id} id={sensor.id} name={sensor.name}></SensorListItem>
-                ))}
+                    {this.props.sensors.map(sensor => (
+                        <SensorListItem key={sensor.id}
+                                        sensor={sensor}
+                                        onButtonClick={this.props.onButtonClick}
+                        />
+                    ))}
                 </tbody>
             </table>
         );
