@@ -16,7 +16,7 @@ import SensorModal from "../Sensors/SensorModal";
 class DeviceDetail extends React.Component{
     state = {
         device: { id: '', name: '' },
-        sensor: { id: '', name: '' },
+        sensor: { id: '', name: '', measurement: '' },
         sensors: [],
         showModal: false,
         modalAction: '',
@@ -139,7 +139,7 @@ class DeviceDetail extends React.Component{
                                     sensors={this.state.sensors}
                                     onButtonClick={this.showSensorModal}
                                 />
-                            : <text className="text-danger">No sensors</text>
+                            : <p className="text-danger">No sensors</p>
                         }
                     </div>
 

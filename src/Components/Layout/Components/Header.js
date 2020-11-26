@@ -19,9 +19,9 @@ class Header extends React.Component {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/devices">Devices</NavLink>
                         </li>
-                        <li className="nav-item">
+                        {/*<li className="nav-item">
                             <NavLink className="nav-link" to="/sensors">Sensors</NavLink>
-                        </li>
+                        </li>*/}
                         <li className="nav-item dropdown ml-auto">
                             <a className="nav-link dropdown-toggle" href="#foo" id="navbarDropdownMenuLink" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

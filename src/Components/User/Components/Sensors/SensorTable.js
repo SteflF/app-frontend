@@ -9,6 +9,7 @@ class SensorTable extends React.Component {
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Measurement</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>

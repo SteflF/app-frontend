@@ -17,7 +17,7 @@ const ApplicationRouter = () => {
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/devices" component={DeviceList}/>
                     <Route exact path="/device/:id" component={DeviceDetail}/>
-                    <Route exact path="/sensors" component={SensorList}/>
+                    {/*<Route exact path="/sensors" component={SensorList}/>*/}
                     <Route exact path="/passwdChange" component={ChangePassword}/>
                 </Layout>
 
